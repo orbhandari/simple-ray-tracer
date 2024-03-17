@@ -1,8 +1,8 @@
 #include <iostream>
-#include <fstream>
+#include "bmp2ppm.h"
 
 int main() {
-    std::ifstream file;
-    file.open("dots.bmp");
+    BMPFileHeader testStruct;
+    std::cout << sizeof(testStruct) << std::endl;
     return 0;
 }
