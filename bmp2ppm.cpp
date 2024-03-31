@@ -1,1 +1,0 @@
-#include "bmp2ppm.h"
