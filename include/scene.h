@@ -7,7 +7,7 @@
 class Scene {
    public:
     // Does ray intersect scene?
-    bool rayIntersect(Ray& ray, Mesh mesh);
+    bool rayIntersect(Ray& ray);
 
    private:
     Camera camera;

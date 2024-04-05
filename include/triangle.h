@@ -7,11 +7,16 @@
 
 class Triangle {
    public:
-    bool isInsideTriangle(Vec3 intersectionPoint);
+    Triangle(Vec3 t1, Vec3 t2, Vec3 t3);
+
+    ~Triangle(){};
+
+    bool isInsideTriangle(Vec3 p);
 
    private:
     Vec3 t1{0};
     Vec3 t2{0};
     Vec3 t3{0};
     std::vector<float> plane{0, 0, 0, 0};
+    Vec3 n{0};  // Unit normal vector
 };

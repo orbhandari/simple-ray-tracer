@@ -8,11 +8,27 @@ class Vec3 {
 
     Vec3(float x, float y, float z);
 
+    float x();
+
+    float y();
+
+    float z();
+
+    Vec3 normalized();
+
+    // Then use the cross product formula to get n (unit normal) of the triangle plane.
+    // Vec3 n = Vec3(a.y() * b.z() - a.z() * b.y(), a.z() * b.x() - a.x() * b.z(), a.x() * b.y() - a.y() * b.x()).normalized();
+    Vec3 cross(const Vec3& b);
+
+    float dot(const Vec3& b);
+
     Vec3 operator+(const Vec3& vector);
 
     Vec3 operator-(const Vec3& vector);
 
     Vec3 operator*(const float& scalar);
+
+    Vec3 operator/(const float& scalar);
 
     friend Vec3 operator*(const float& scalar, const Vec3& vector);
 
