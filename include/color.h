@@ -3,6 +3,7 @@
 
 #include "vec3.h"
 
+// This function is referenced from "Ray Tracing in a Weekend" series.
 using Color3 = Vec3;
 void writeColor(std::ostream &out, Color3 pixel_color) {
     // Assumes each component of pixel_color is in the correct range of [0,1].

@@ -26,8 +26,11 @@ class Vec3 {
     };
 
     Vec3 normalized() const {
-        float magnitude = std::sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
-        return (*this / magnitude);
+        return (*this / (*this).norm());
+    }
+
+    float norm() const {
+        return std::sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
     }
 
     // Note that order matters.
@@ -57,7 +60,7 @@ class Vec3 {
     }
 
     friend Vec3 operator/(const Vec3& vector, const float& scalar) {
-        return Vec3{1 / scalar * vector.m_x, 1 / scalar * vector.m_y, 1 / scalar * vector.m_z};
+        return Vec3{(1.0f / scalar) * vector.m_x, (1.0f / scalar) * vector.m_y, (1.0f / scalar) * vector.m_z};
     };
 
     friend Vec3 operator+(const Vec3& u, const Vec3& v) {
@@ -67,6 +70,10 @@ class Vec3 {
     friend Vec3 operator-(const Vec3& u, const Vec3& v) {
         return Vec3(u.m_x - v.m_x, u.m_y - v.m_y, u.m_z - v.m_z);
     };
+
+    void printVec() {
+        std::cout << m_x << ' ' << m_y << ' ' << m_z << '\n';
+    }
 
     // For access only
     float operator[](const int& index) const {

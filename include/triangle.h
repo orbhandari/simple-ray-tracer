@@ -2,16 +2,20 @@
 // Each triangle is characterised by {t1,t2,t3}, where each ti is a vec3 coordinate
 // Plane of triangle?
 #pragma once
-#include "vec3.h"
 #include <vector>
+
+#include "vec3.h"
 
 class Triangle {
    public:
     Triangle(Vec3 t1, Vec3 t2, Vec3 t3);
 
-    ~Triangle(){};
+    bool isInsideTriangle(Point3 p);
 
-    bool isInsideTriangle(Vec3 p);
+    const std::vector<float>& getPlane() {
+        return plane;
+    }
+
 
    private:
     Vec3 t1{0};

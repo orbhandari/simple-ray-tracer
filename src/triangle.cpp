@@ -9,12 +9,13 @@ Triangle::Triangle(Vec3 t1, Vec3 t2, Vec3 t3) : t1(t1), t2(t2), t3(t3) {
 
     // Then take the cross product and normalize it to get a unit normal.
     n = a.cross(b).normalized();
-    n = -1 * n;  // Define such a direction as the correct direction, based on t1,t2,t3.
+    n = -1.0 * n;  // Define such a direction as the correct direction, based on t1,t2,t3.
 
     float p = n.x();
     float q = n.y();
     float r = n.z();
 
+    // std::cout << n.x() << ' ' << n.y() << ' ' << n.z() << '\n';
     // Clearly, t1 is a point on the plane, so we can now find out d.
     float d = p * t1.x() + q * t1.y() + r * t1.z();
     // We now have sufficient information to completely define the equation of the plane.
@@ -29,7 +30,21 @@ bool Triangle::isInsideTriangle(Point3 p) {
     // Then, we perform the "inside-outside test.
     // e stands for edge.
 
-    // ((t2 - t1).cross(p - t1)).dot(n)
+    // std::cout << p.x() << '\n';
+    // std::cout << (((t2 - t1).cross(p - t1)).dot(n) >= -1 * 10e-4) << '\n';
+    // std::cout << (((t3 - t2).cross(p - t2)).dot(n) >= -1 * 10e-4) << '\n';
+    // std::cout << (((t1 - t3).cross(p - t3)).dot(n) >= -1 * 10e-4) << '\n';
 
-    // return
+    // return false;
+    // std::cout << n.x() << ' ' << n.y() << ' ' << n.z() << '\n';
+
+
+    
+    // std::cout << "cP1 " << (t2 - t1).cross(p - t1).printVec() << '\n';
+    // std::cout << "cP2 " << ((t3 - t2).cross(p - t2)).dot(n) << '\n';
+    // std::cout << "cP3 " << ((t1 - t3).cross(p - t3)).dot(n) << '\n';
+
+    return (-((t2 - t1).cross(p - t1)).dot(n) >= -10e-2) &&
+           (-((t3 - t2).cross(p - t2)).dot(n) >= -10e-2) &&
+           (-((t1 - t3).cross(p - t3)).dot(n) >= -10e-2);
 }
