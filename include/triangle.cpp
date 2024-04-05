@@ -1,4 +1,4 @@
-#include "include/triangle.h"
+#include "triangle.h"
 
 Triangle::Triangle(Vec3 t1, Vec3 t2, Vec3 t3) : t1(t1), t2(t2), t3(t3) {
     // Calculate the (general) plane formula associated with the triangle.
@@ -24,16 +24,12 @@ Triangle::Triangle(Vec3 t1, Vec3 t2, Vec3 t3) : t1(t1), t2(t2), t3(t3) {
     plane[3] = d;
 }
 
-bool Triangle::isInsideTriangle(Vec3 p) {
+bool Triangle::isInsideTriangle(Point3 p) {
     // Assumes p is already on the plane of the triangle.
     // Then, we perform the "inside-outside test.
     // e stands for edge.
 
     // ((t2 - t1).cross(p - t1)).dot(n)
 
-    
-
-    // return 
-
-
+    // return
 }

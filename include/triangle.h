@@ -1,8 +1,8 @@
 // A triangle primitive (shape) to define all our objects
 // Each triangle is characterised by {t1,t2,t3}, where each ti is a vec3 coordinate
 // Plane of triangle?
-#include <vec3.h>
-
+#pragma once
+#include "vec3.h"
 #include <vector>
 
 class Triangle {
