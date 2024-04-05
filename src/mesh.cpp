@@ -26,15 +26,11 @@ bool Mesh::rayIntersect(Ray& ray) {
         }
 
         Vec3 p = ray.o + t * ray.d;
-        // std::cout << "p: " << p.x() << ' ' << p.y()  << ' ' << p.z() << '\n';
+
         if (triangles[i].isInsideTriangle(p)) {
-            // std::cout << "Is inside triangle\n";
-            // std::cout << "t: " << t << '\n';
-            // std::cout << "ray t: " << ray.t << '\n';
             foundIntersection = true;
             if (t < ray.t) {
                 ray.t = t;
-                // std::cout << "ray t: " << t << '\n';
             }
         }
     }

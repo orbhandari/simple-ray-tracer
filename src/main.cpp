@@ -45,8 +45,6 @@ int main() {
     // Find (virtual) center of a pixel.
     Vec3 viewport_upper_left{Vec3(0, 0, focal_length) + (-viewport_u / 2) + (-viewport_v / 2)};
     Vec3 pixel_00_location{viewport_upper_left + 0.5 * (px_delta_u + px_delta_v)};
-    // std::cout << "pixel_00_location: ";
-    // pixel_00_location.printVec();
 
     // Preamble of a .PPM image.
     std::cout
@@ -58,22 +56,14 @@ int main() {
     for (int j = 0; j < IMAGE_HEIGHT; ++j) {
         std::clog << "\rScanlines remaining: " << (IMAGE_HEIGHT - j) << ' ' << std::flush;
         for (int i = 0; i < IMAGE_WIDTH; ++i) {
-            // Create new ray
-            // Call rayIntersect
-            // Let ir, ig, ib = 1/d, where d = distance travelled by ray to intersection point
-            // 0 if no intersection
             Vec3 rayDirection{pixel_00_location + (i * px_delta_u) + (j * px_delta_v)};
             Ray ray{camera_center, rayDirection};
-
-            // rayDirection.printVec();
 
             Color3 color{0};
             if (myMesh.rayIntersect(ray)) {
                 // Temporarily render distance
-                // float d = ray.getDistance();
                 float d = (ray.o + ray.t * ray.d).z();
                 color = {1 / d, 1 / d, 1 / d};
-                // std::cout << "d: " << d << '\n';
             }
             writeColor(std::cout, color);
         }

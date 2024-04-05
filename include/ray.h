@@ -15,7 +15,7 @@ class Ray {
     }
 
     //    private:
-    Point3 o{0};                                              // origin
+    Point3 o{0};                                      // origin
     float t{std::numeric_limits<float>::infinity()};  // scalar multiple
-    Vec3 d{0};                                                // direction
+    Vec3 d{0};                                        // direction
 };

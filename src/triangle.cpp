@@ -28,22 +28,8 @@ Triangle::Triangle(Vec3 t1, Vec3 t2, Vec3 t3) : t1(t1), t2(t2), t3(t3) {
 bool Triangle::isInsideTriangle(Point3 p) {
     // Assumes p is already on the plane of the triangle.
     // Then, we perform the "inside-outside test.
-    // e stands for edge.
 
-    // std::cout << p.x() << '\n';
-    // std::cout << (((t2 - t1).cross(p - t1)).dot(n) >= -1 * 10e-4) << '\n';
-    // std::cout << (((t3 - t2).cross(p - t2)).dot(n) >= -1 * 10e-4) << '\n';
-    // std::cout << (((t1 - t3).cross(p - t3)).dot(n) >= -1 * 10e-4) << '\n';
-
-    // return false;
-    // std::cout << n.x() << ' ' << n.y() << ' ' << n.z() << '\n';
-
-
-    
-    // std::cout << "cP1 " << (t2 - t1).cross(p - t1).printVec() << '\n';
-    // std::cout << "cP2 " << ((t3 - t2).cross(p - t2)).dot(n) << '\n';
-    // std::cout << "cP3 " << ((t1 - t3).cross(p - t3)).dot(n) << '\n';
-
+    // Note: We must use LEFT-HAND RULE!!! ah....
     return (-((t2 - t1).cross(p - t1)).dot(n) >= -10e-2) &&
            (-((t3 - t2).cross(p - t2)).dot(n) >= -10e-2) &&
            (-((t1 - t3).cross(p - t3)).dot(n) >= -10e-2);
